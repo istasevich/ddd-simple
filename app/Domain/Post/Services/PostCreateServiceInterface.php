@@ -2,7 +2,13 @@
 
 namespace App\Domain\Post\Services;
 
+use App\Application\Commands\Post\PostCreateCommand;
+
 interface PostCreateServiceInterface
 {
-	public function execute();
+	/**
+	 * @param PostCreateCommand $command
+	 * @return mixed
+	 */
+	public function execute(PostCreateCommand $command);
 }

@@ -11,6 +11,11 @@
 |
 */
 
+use App\Domain\Post\PostRepositoryInterface;
+use App\Domain\Post\Services\PostCreateServiceInterface;
+use App\Infrastructure\Repository\PostRepository;
+use App\Infrastructure\Services\PostCreateService;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
@@ -39,6 +44,16 @@ $app->singleton(
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
 	App\Infrastructure\Exceptions\Handler::class
+);
+
+$app->bind(
+	PostCreateServiceInterface::class,
+	PostCreateService::class
+);
+
+$app->bind(
+	PostRepositoryInterface::class,
+	PostRepository::class
 );
 
 /*

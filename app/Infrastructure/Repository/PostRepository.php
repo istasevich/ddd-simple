@@ -8,6 +8,9 @@ use Doctrine\ORM\EntityManager;
 
 class PostRepository implements PostRepositoryInterface
 {
+	/**
+	 * @var EntityManager
+	 */
 	private $entityManager;
 
 	public function __construct(EntityManager $entityManager)

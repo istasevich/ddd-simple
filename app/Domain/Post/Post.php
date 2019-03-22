@@ -36,26 +36,41 @@ class Post
 		$this->setBody($input['body']);
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getId()
 	{
 		return $this->id;
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getTitle()
 	{
 		return $this->title;
 	}
 
+	/**
+	 * @param $title
+	 */
 	public function setTitle($title)
 	{
 		$this->title = $title;
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getBody()
 	{
 		return $this->body;
 	}
 
+	/**
+	 * @param $body
+	 */
 	public function setBody($body)
 	{
 		$this->body = $body;
