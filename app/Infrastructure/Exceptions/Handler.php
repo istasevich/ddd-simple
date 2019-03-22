@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Infrastructure\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -26,12 +26,11 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
-     * Report or log an exception.
-     *
-     * @param  \Exception  $exception
-     * @return void
-     */
+	/**
+	 * @param Exception $exception
+	 * @return mixed|void
+	 * @throws Exception
+	 */
     public function report(Exception $exception)
     {
         parent::report($exception);
