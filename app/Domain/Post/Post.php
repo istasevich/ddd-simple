@@ -30,10 +30,40 @@ class Post
 	 */
 	private $body;
 
-	public function __construct($input)
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $createdAt;
+
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	private $updatedAt;
+
+	public function __construct(string  $title, string $body,
+	                            ?\DateTime $createdAt, ?\DateTime $updatedAt
+	)
 	{
-		$this->setTitle($input['title']);
-		$this->setBody($input['body']);
+		$this->setTitle($title);
+		$this->setBody($body);
+		$this->setCreatedDate($createdAt);
+		$this->setUpdatedDate($updatedAt);
+	}
+
+	/**
+	 * @param \DateTime $dateTime
+	 */
+	public function setCreatedDate(\DateTime $dateTime)
+	{
+		$this->createdAt = $dateTime;
+	}
+
+	/**
+	 * @param \DateTime $dateTime
+	 */
+	public function setUpdatedDate(\DateTime $dateTime)
+	{
+		$this->updatedAt = $dateTime;
 	}
 
 	/**

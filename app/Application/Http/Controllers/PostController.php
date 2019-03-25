@@ -24,6 +24,8 @@ class PostController extends Controller
 	}
 
 	/**
+	 *
+
 	 * @param Request $request
 	 * @return JsonResponse
 	 * @throws PostCreateException

@@ -68,10 +68,14 @@ class PostRepository implements PostRepositoryInterface
 
 	/**
 	 * @param array $data
-	 * @return mixed
+	 * @return Post
+	 * @throws \Exception
 	 */
 	public function prepareData($data = []): Post
 	{
-		return new Post($data);
+		return new Post($data['tittle'] ?? '',
+			$data['body'] ?? '',
+			new \DateTime(), new \DateTime()
+		);
 	}
 }
