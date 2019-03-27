@@ -11,6 +11,15 @@
 |
 */
 
+use App\Domain\Post\PostRepositoryInterface;
+use App\Domain\Post\Services\PostCreateServiceInterface;
+use App\Domain\User\Services\UserRegistrationServiceInterface;
+use App\Domain\User\UserRepositoryInterface;
+use App\Infrastructure\Repository\Post\PostRepository;
+use App\Infrastructure\Repository\User\UserRepository;
+use App\Infrastructure\Services\Post\PostCreateService;
+use App\Infrastructure\Services\User\UserRegisterService;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
@@ -28,17 +37,37 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\Http\Kernel::class
+	App\Application\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    App\Application\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+	App\Infrastructure\Exceptions\Handler::class
+);
+
+$app->bind(
+	PostCreateServiceInterface::class,
+	PostCreateService::class
+);
+
+$app->bind(
+	PostRepositoryInterface::class,
+	PostRepository::class
+);
+
+$app->bind(
+    UserRegistrationServiceInterface::class,
+    UserRegisterService::class
+);
+
+$app->bind(
+    UserRepositoryInterface::class,
+    UserRepository::class
 );
 
 /*
