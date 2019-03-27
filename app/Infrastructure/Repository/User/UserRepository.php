@@ -5,26 +5,9 @@ namespace App\Infrastructure\Repository\User;
 use App\Domain\User\User;
 use App\Domain\User\UserRepositoryInterface;
 use App\Infrastructure\Repository\BaseRepository;
-use Doctrine\ORM\EntityManager;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
-    
-    /**
-     * @var EntityManager
-     */
-    protected $entityManager;
-    
-    /**
-     * BaseRepository constructor.
-     *
-     * @param EntityManager $entityManager
-     */
-    public function __construct(EntityManager $entityManager)
-    {
-        $this->entityManager = $entityManager;
-        
-    }
     
     /**
      * @param User $user
