@@ -13,8 +13,12 @@
 
 use App\Domain\Post\PostRepositoryInterface;
 use App\Domain\Post\Services\PostCreateServiceInterface;
-use App\Infrastructure\Repository\PostRepository;
-use App\Infrastructure\Services\PostCreateService;
+use App\Domain\User\Services\UserRegistrationServiceInterface;
+use App\Domain\User\UserRepositoryInterface;
+use App\Infrastructure\Repository\Post\PostRepository;
+use App\Infrastructure\Repository\User\UserRepository;
+use App\Infrastructure\Services\Post\PostCreateService;
+use App\Infrastructure\Services\User\UserRegisterService;
 
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
@@ -54,6 +58,16 @@ $app->bind(
 $app->bind(
 	PostRepositoryInterface::class,
 	PostRepository::class
+);
+
+$app->bind(
+    UserRegistrationServiceInterface::class,
+    UserRegisterService::class
+);
+
+$app->bind(
+    UserRepositoryInterface::class,
+    UserRepository::class
 );
 
 /*

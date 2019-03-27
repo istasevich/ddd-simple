@@ -1,23 +1,14 @@
 <?php
 
-namespace App\Infrastructure\Repository;
+namespace App\Infrastructure\Repository\Post;
 
 use App\Domain\Post\Post;
 use App\Domain\Post\PostRepositoryInterface;
-use Doctrine\ORM\EntityManager;
+use App\Infrastructure\Repository\BaseRepository;
 
-class PostRepository implements PostRepositoryInterface
+class PostRepository extends BaseRepository implements PostRepositoryInterface
 {
-	/**
-	 * @var EntityManager
-	 */
-	private $entityManager;
-
-	public function __construct(EntityManager $entityManager)
-	{
-		$this->entityManager = $entityManager;
-	}
-
+ 
 	/**
 	 * @param Post $post
 	 * @throws \Doctrine\ORM\ORMException
@@ -49,7 +40,7 @@ class PostRepository implements PostRepositoryInterface
 	 */
 	public function findById(int $id): ?Post
 	{
-		return $this->entityManager->getRepository(Post::class)->findOneBy([
+		return $this->entityRepository->findOneBy([
 			'id' => $id
 		]);
 	}
@@ -78,4 +69,12 @@ class PostRepository implements PostRepositoryInterface
 			new \DateTime(), new \DateTime()
 		);
 	}
+    
+    /**
+     * @return string
+     */
+    protected function getEntityName()
+    {
+       return Post::class;
+    }
 }

@@ -39,6 +39,13 @@ class Post
 	 * @ORM\Column(type="datetime")
 	 */
 	private $updatedAt;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Domain\User\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+	private $user;
 
 	public function __construct(string  $title, string $body,
 	                            ?\DateTime $createdAt, ?\DateTime $updatedAt

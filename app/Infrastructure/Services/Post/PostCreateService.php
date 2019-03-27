@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Services;
+namespace App\Infrastructure\Services\Post;
 
 use App\Application\Commands\Post\PostCreateCommand;
 use App\Domain\Post\PostCreateException;
