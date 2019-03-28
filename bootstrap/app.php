@@ -13,11 +13,13 @@
 
 use App\Domain\Post\PostRepositoryInterface;
 use App\Domain\Post\Services\PostCreateServiceInterface;
+use App\Domain\User\Services\UserLoginServiceInterface;
 use App\Domain\User\Services\UserRegistrationServiceInterface;
 use App\Domain\User\UserRepositoryInterface;
 use App\Infrastructure\Repository\Post\PostRepository;
 use App\Infrastructure\Repository\User\UserRepository;
 use App\Infrastructure\Services\Post\PostCreateService;
+use App\Infrastructure\Services\User\UserLoginService;
 use App\Infrastructure\Services\User\UserRegisterService;
 
 $app = new Illuminate\Foundation\Application(
@@ -50,25 +52,12 @@ $app->singleton(
 	App\Infrastructure\Exceptions\Handler::class
 );
 
-$app->bind(
-	PostCreateServiceInterface::class,
-	PostCreateService::class
-);
+$app->bind(PostCreateServiceInterface::class, PostCreateService::class);
+$app->bind(PostRepositoryInterface::class, PostRepository::class);
 
-$app->bind(
-	PostRepositoryInterface::class,
-	PostRepository::class
-);
-
-$app->bind(
-    UserRegistrationServiceInterface::class,
-    UserRegisterService::class
-);
-
-$app->bind(
-    UserRepositoryInterface::class,
-    UserRepository::class
-);
+$app->bind(UserRegistrationServiceInterface::class, UserRegisterService::class);
+$app->bind(UserRepositoryInterface::class, UserRepository::class);
+$app->bind(UserLoginServiceInterface::class, UserLoginService::class);
 
 /*
 |--------------------------------------------------------------------------
